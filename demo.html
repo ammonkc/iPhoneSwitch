@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+	<title>iPhoneSwitch Demo</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.iphoneSwitch.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('.iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250});
+		});
+	</script>
+	<style type="text/css" media="screen">
+		form {
+			width:400px;
+			margin:100px auto;
+			padding:10px 20px;
+			border:2px solid #cacaca;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			text-align: center;
+			color: rbg(102,102,102);
+			background-color: #fff;
+		}
+		label {
+			width:150px;
+			height:30px;
+			line-height:30px;
+			margin-right:10px;
+			color:rgb(102,102,102);
+			font-weight:bold;
+			text-align:right;
+			float:left;
+		}
+		h2 {color: rgb(102, 102, 102);text-align:center;}
+	</style>
+</head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">
+	<form action="demo_submit" method="get" accept-charset="utf-8">
+		<h2>iPhoneSwitch</h2>
+		<label for="switch">iPhone Switch:</label>
+		<div class="switch-container" style="height:30px; width:200px; position: relative; overflow: hidden;"><input type="checkbox" name="switch" value="" id="switch" class="iphoneSwitch" style="display: none; "><div class="track" style="height: 29px; width: 95px; position: absolute; background-image: url(file:///Users/ammon/Downloads/iphoneSwitch/images/switch_track.png); cursor: pointer; background-position: 0px 0px; "><span class="label left" style="height:25px; width:37px; float:left; color: #fff;font-size:12px;text-shadow: #333 0px 1px 0px;text-align: center;">On</span><span class="label right" style="height:25px; width:37px; float:right; color: #fff;font-size:12px;text-shadow: #333 0px 1px 0px;text-align: center;">Off</span><div class="handle" style="height: 25px; width: 37px; position: absolute; background-image: url(file:///Users/ammon/Downloads/iphoneSwitch/images/switch_handle.png); left: 2px; right: 56px; background-position: 0px 0px; "></div></div></div>
+	</form>
+
+</body></html>
