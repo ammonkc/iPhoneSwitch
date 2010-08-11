@@ -1,13 +1,17 @@
-/************************************************ 
-*  jQuery iphoneSwitch plugin                   *
-*                                               *
-*  jquery.iphoneSwitch.js                       *
-*  Author: Ammon Casey                          *
-*  Website: http://www.brokenparadigmlabs.com   *
-*  http://github.com/ammonkc/iPhoneSwitch       *
-*  Twitter: @ammonkc                            *
-*  Date: 08.10.2010                             *
-************************************************/
+/******************************************************* 
+*  jQuery iphoneSwitch plugin                          *
+*                                                      *
+*  jquery.iphoneSwitch.js                              *
+*  Author: Ammon Casey                                 *
+*  Website: http://www.brokenparadigmlabs.com          *
+*  http://github.com/ammonkc/iPhoneSwitch              *
+*  Twitter: @ammonkc                                   *
+*  Date: 08.10.2010                                    *
+*                                                      *
+*  Copyright (c) 2010, Ammon Casey                     *
+*  licensed under the MIT license:                     *
+*  http://www.opensource.org/licenses/mit-license.php  *
+********************************************************/
 
 jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_off_callback, options) {
 

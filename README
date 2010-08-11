@@ -1,3 +1,18 @@
+/******************************************************* 
+*  jQuery iphoneSwitch plugin                          *
+*                                                      *
+*  jquery.iphoneSwitch.js                              *
+*  Author: Ammon Casey                                 *
+*  Website: http://www.brokenparadigmlabs.com          *
+*  http://github.com/ammonkc/iPhoneSwitch              *
+*  Twitter: @ammonkc                                   *
+*  Date: 08.10.2010                                    *
+*                                                      *
+*  Copyright (c) 2010, Ammon Casey                     *
+*  licensed under the MIT license:                     *
+*  http://www.opensource.org/licenses/mit-license.php  *
+********************************************************/
+
 check the demo source for examples of how to use the plugin.
 There are many options that can be passed via the 4th parameter
 
