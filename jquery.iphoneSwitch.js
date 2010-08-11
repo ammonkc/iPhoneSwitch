@@ -146,7 +146,8 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 					'-webkit-box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
 					'-moz-box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
 					'box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
-					'-webkit-background-clip':'padding-box'
+					'-webkit-background-clip':'padding-box',
+					'background-clip':'padding-box'
 					});
 			handle.css({
 					'background-color':settings.handle_bg_color,
@@ -158,7 +159,8 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 					'-webkit-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
 					'-moz-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
 					'box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
-					'-webkit-background-clip':'padding-box'
+					'-webkit-background-clip':'padding-box',
+					'background-clip':'padding-box'
 					});
 		}
 		
