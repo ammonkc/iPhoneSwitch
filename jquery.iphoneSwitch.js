@@ -1,8 +1,10 @@
 /************************************************ 
 *  jQuery iphoneSwitch plugin                   *
-*                                               *
+*  				                                *
+*  jquery.iphoneSwitch.js                       *
 *  Author: Ammon Casey		                    *
 *  Website: http://www.brokenparadigmlabs.com	*
+*  http://github.com/ammonkc/iPhoneSwitch       *
 *  Twitter: @ammonkc							*
 *  Date:   08.10.2010                           *
 ************************************************/
