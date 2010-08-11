@@ -1,10 +1,14 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
 	<title>iPhoneSwitch Demo</title>
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="jquery.iphoneSwitch.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-			$('.iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250});
+			$('fieldset.light .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250});
+			$('fieldset.dark .iphoneSwitch').iphoneSwitch("on",function() {},function() {},{speed: 250,track_img:'images/switch_track-dark.png',track_height:28});
+			$('fieldset.imageless .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250,use_images:false,switch_radius:3});
+			$('fieldset.imageless-dark .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250,use_images:false,track_bg_color:'#333',switch_radius:4});
 		});
 	</script>
 	<style type="text/css" media="screen">
@@ -30,13 +34,46 @@
 			text-align:right;
 			float:left;
 		}
+		fieldset {
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+		}
+		fieldset.dark {
+			background-color: #444;			
+		}
+		fieldset.imageless-dark {
+			background-color: #444;
+		}
 		h2 {color: rgb(102, 102, 102);text-align:center;}
 	</style>
-</head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">
+</head>
+<body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">
 	<form action="demo_submit" method="get" accept-charset="utf-8">
 		<h2>iPhoneSwitch</h2>
-		<label for="switch">iPhone Switch:</label>
-		<div class="switch-container" style="height:30px; width:200px; position: relative; overflow: hidden;"><input type="checkbox" name="switch" value="" id="switch" class="iphoneSwitch" style="display: none; "><div class="track" style="height: 29px; width: 95px; position: absolute; background-image: url(file:///Users/ammon/Downloads/iphoneSwitch/images/switch_track.png); cursor: pointer; background-position: 0px 0px; "><span class="label left" style="height:25px; width:37px; float:left; color: #fff;font-size:12px;text-shadow: #333 0px 1px 0px;text-align: center;">On</span><span class="label right" style="height:25px; width:37px; float:right; color: #fff;font-size:12px;text-shadow: #333 0px 1px 0px;text-align: center;">Off</span><div class="handle" style="height: 25px; width: 37px; position: absolute; background-image: url(file:///Users/ammon/Downloads/iphoneSwitch/images/switch_handle.png); left: 2px; right: 56px; background-position: 0px 0px; "></div></div></div>
+		<fieldset class="light">
+			<h3>Light Track Image</h3>
+			<label for="switch">iPhone Switch:</label>
+			<input type="checkbox" name="switch" value="" id="switch" class="iphoneSwitch" style="">
+		</fieldset>
+		
+		<fieldset class="dark">
+			<h3>Dark Track Image</h3>
+			<label for="switch">iPhone Switch:</label>
+			<input type="checkbox" name="switch" value="" id="switch" class="iphoneSwitch" style="">
+		</fieldset>
+		
+		<fieldset class="imageless">
+			<h3>No Images</h3>
+			<label for="switch">iPhone Switch:</label>
+			<input type="checkbox" name="switch" value="" id="switch" class="iphoneSwitch" style="">
+		</fieldset>
+		
+		<fieldset class="imageless-dark">
+			<h3>No Images</h3>
+			<label for="switch">iPhone Switch:</label>
+			<input type="checkbox" name="switch" value="" id="switch" class="iphoneSwitch" style="">
+		</fieldset>
+		
 	</form>
-
-</body></html>
+</body>
+</html>

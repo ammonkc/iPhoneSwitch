@@ -4,7 +4,7 @@
 *  Author: Ammon Casey		                    *
 *  Website: http://www.brokenparadigmlabs.com	*
 *  Twitter: @ammonkc							*
-*  Date:   09.02.2009                           *
+*  Date:   08.10.2010                           *
 ************************************************/
 
 jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_off_callback, options) {
@@ -21,18 +21,20 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 		speed: '300',
 		on_label: 'On',
 		off_label: 'Off',
-		switch_height: 30,
-		switch_width: 200,
+		switch_height: 28,
+		switch_width: 93,
 		switch_radius: 3,
 		track_img: 'images/switch_track.png',
 		track_bg_color: '#5f6777',
-		track_width: 95,
-		track_height: 29,
+		track_width: 93,
+		track_height: 27,
 		handle_img: 'images/switch_handle.png',
 		handle_bg_color: '#f9f9f9',
 		handle_border_color: '#d0d0d0',
 		handle_height: 25,
-		handle_width: 37
+		handle_width: 37,
+		label_color: "#ffffff",
+		label_font_size: 12
 	};
 
 	if(options) {
@@ -47,73 +49,145 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 		var container;
 		var track;
 		var handle;
-		var offset = (settings.track_width - 2) - settings.handle_width;
+		var offset = (settings.track_width - 1) - settings.handle_width;
 		
 		// Hide the checkbox
-		if (settings.hide_checkbox) {jQuery(checkbox).hide();}
+		if (settings.hide_checkbox) {checkbox.hide();}
 		
 		// sync checkbox state with switch state
-		if (settings.sync_checkbox) {state = jQuery(checkbox).attr('checked') == true ? 'on' : 'off';}
+		if (settings.sync_checkbox) {state = checkbox.attr('checked') == true ? 'on' : 'off';}
+		
+		var left = (state == 'on' ? offset : '1');
+		var right = (state == 'on' ? '1' : offset);
 		
 		// use images 
 		if (settings.use_images) {
-			track_bg = 'background-image:url('+settings.track_img+'); background-repeat:none; background-position: 0px 0px;';
-			handle_bg = 'background-image:url('+settings.handle_img+'); background-repeat:none; background-position: 0px 0px;';			
+			track_bg = 'url('+settings.track_img+')';
+			handle_bg = 'url('+settings.handle_img+')';
 		}else{
-			track_bg = 'background-color:'+settings.track_bg_color+'; -webkit-border-radius: '+settings.switch_radius+'px;';
-			handle_bg = 'background-color:'+settings.handle_bg_color+'; -webkit-border-radius:'+settings.switch_radius+'px;';
+			track_bg = settings.track_bg_color;
+			handle_bg = settings.handle_bg_color;
 		}
-		// make the container
-		container = jQuery('<div class="switch-container" style="height:'+settings.switch_height+'px; width:'+settings.switch_width+'px; position: relative; overflow: hidden;font: normal normal normal 12px/18px \'Lucida Grande\', Verdana, sans-serif;"></div>');
+		/**** make the container ****/
+		container = jQuery('<div />')
+		                .addClass('switch-container')
+		                .css({
+		                    'height':settings.switch_height,
+		                    'width':settings.switch_width,
+		                    'position':'relative',
+		                    'overflow':'hidden',
+		                    'font':"normal normal normal 12px/18px 'Lucida Grande', Verdana, sans-serif"
+		                    });
+		/**** make the track ****/
+		track = jQuery('<div />')
+		            .addClass('track')
+		            .css({
+		                'height':settings.track_height,
+		                'width':settings.track_width,
+		                'position':'absolute',
+		                'background-image':track_bg,						
+		                'background-repeat':'no-repeat'					
+		                });
 		
-		// make the track
-		track = jQuery('<div class="track" style="height:'+settings.track_height+'px; width:'+settings.track_width+'px; position:absolute; '+track_bg+'"></div>');
+		/**** Make the handle ****/
+		handle = jQuery('<div />')
+		            .addClass('handle')
+		            .css({
+		                'height':settings.handle_height,
+		                'width':settings.handle_width,
+		                'left':left,
+		                'right':right,
+		                'top':1,
+		                'bottom':1,
+		                'position':'absolute',
+		                'background-image':handle_bg,
+		                'background-repeat':'no-repeat'						
+		                });
 		
-		// Make the handle
-		handle = jQuery('<div class="handle" style="height:'+settings.handle_height+'px; width:'+settings.handle_width+'px; left:'+(state == 'on' ? offset+'px' : '2px')+'; right:'+(state == 'on' ? '2px' : offset+'px')+'; top:2px; bottom:2px; position:absolute; '+handle_bg+'"></div>');
+		/**** Make the labels ****/
+		label_on = jQuery('<span />')
+		                .addClass('label')
+		                .addClass('left')
+		                .text(settings.on_label)
+		                .css({
+		                    'height':settings.handle_height,
+		                    'width':settings.handle_width,
+		                    'line-height':settings.track_height + 'px',
+		                    'color':settings.label_color,
+		                    'font-size':settings.label_font_size,
+		                    'text-align':'center',
+		                    'text-shadow':'#333 0px 1px 0px',
+		                    'float':'left'	                    
+		                    });
+		label_off = jQuery('<span />')
+		                .addClass('label')
+		                .addClass('right')
+		                .text(settings.off_label)
+		                .css({
+		                    'height':settings.handle_height,
+		                    'width':settings.handle_width,
+		                    'line-height':settings.track_height + 'px',
+		                    'color':settings.label_color,
+		                    'font-size':settings.label_font_size,
+		                    'text-align':'center',
+		                    'text-shadow':'#333 0px 1px 0px',
+		                    'position':'absolute',
+		                    'top':1,
+		                    'right':1,
+		                    'bottom':1	                    
+		                    });
+		// use images 
+		if (!settings.use_images) {
+			track.css({
+					'background-color':settings.track_bg_color,
+					'-webkit-border-radius':settings.switch_radius,
+					'-moz-border-radius':settings.switch_radius,
+					'border-radius':settings.switch_radius,
+					'-webkit-box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+					'-moz-box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+					'box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+					'-webkit-background-clip':'padding-box'
+					});
+			handle.css({
+					'background-color':settings.handle_bg_color,
+					'background-image':'-webkit-gradient(linear, 0% 0%, 0% 100%, from(#bbb), to(#fff))',
+					'background-image':'-moz-linear-gradient(-90deg, #bbb, #fff)',
+					'-webkit-border-radius':settings.switch_radius,
+					'-moz-border-radius':settings.switch_radius,
+					'border-radius':settings.switch_radius,
+					'-webkit-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
+					'-moz-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
+					'box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
+					'-webkit-background-clip':'padding-box'
+					});
+		}
 		
-		// Make the labels
-		label_on = jQuery ('<span class="label left" style="height:'+settings.handle_height+'px; width:'+settings.handle_width+'px; line-height:'+settings.track_height+'px; float:left; color: #fff;font-size:12px;text-shadow:#333 0px 1px 0px;text-align: center;"></span>');
-		label_off = jQuery ('<span class="label right" style="height:'+settings.handle_height+'px; width:'+settings.handle_width+'px; line-height:'+settings.track_height+'px; float:right; color: #fff;font-size:12px;text-shadow:#333 0px 1px 0px;text-align: center;"></span>');
+		/* insert into placeholder */
+		checkbox.wrap(container);
+		track.append(label_on)
+		     .append(label_off)
+		     .append(handle);
+		checkbox.after(track);
 		
-		// Insert the label text
-		jQuery(label_on).text(settings.on_label);
-		jQuery(label_off).text(settings.off_label);
+		var mySwitch = checkbox.parent();
 		
-		// insert into placeholder
-		jQuery(checkbox).wrap(jQuery(container));
-		jQuery(track).append(jQuery(label_on));
-		jQuery(track).append(jQuery(label_off));
-		jQuery(track).append(jQuery(handle));
-		jQuery(checkbox).after(jQuery(track));
-		
-		var mySwitch = jQuery(checkbox).parent();
-		
-		jQuery(mySwitch).find('.track').mouseover(function(){
-			jQuery(this).css("cursor", settings.mouse_over);
-		});
-
-		jQuery(mySwitch).find('.track').mouseout(function(){
-			jQuery(this).css("background", settings.mouse_out);
-		});
-
 		// click handling
-		jQuery(mySwitch).find('.track').click(function() {			
+		jQuery(mySwitch).find('.handle').click(function() {
 			if(state == 'on') {
-				jQuery(mySwitch).find('.handle').animate({left: "2px",right: offset+"px"}, settings.speed, function() {
+				$(this).animate({left: 1,right: offset}, settings.speed, function() {
 					switched_off_callback();
 				});
-				jQuery(checkbox).attr('checked',false);
+				checkbox.attr('checked',false);
 				state = 'off';
 			}else {
-				jQuery(mySwitch).find('.handle').animate({left: offset+"px",right: "2px"}, settings.speed, function() {
+				$(this).animate({left: offset,right: 1}, settings.speed, function() {
 					switched_on_callback();
 				});
-				jQuery(checkbox).attr('checked',true);
+				checkbox.attr('checked',true);
 				state = 'on';
 			}
 		});		
 
 	});
 	
-};
+}
