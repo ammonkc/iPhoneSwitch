@@ -87,8 +87,8 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 		                'height':settings.track_height,
 		                'width':settings.track_width,
 		                'position':'absolute',
-		                'background-image':track_bg,						
-		                'background-repeat':'no-repeat'					
+		                'background-image':track_bg,
+		                'background-repeat':'no-repeat'
 		                });
 		
 		/**** Make the handle ****/
@@ -103,9 +103,9 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 		                'bottom':1,
 		                'position':'absolute',
 		                'background-image':handle_bg,
-		                'background-repeat':'no-repeat'						
+		                'background-repeat':'no-repeat'
 		                });
-		
+
 		/**** Make the labels ****/
 		label_on = jQuery('<span />')
 		                .addClass('label')
