@@ -156,9 +156,9 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 					'background-clip':'padding-box'
 					});
 			handle.css({
-					'background-color':settings.handle_bg_color,
+					'background':'-moz-linear-gradient(-90deg, #bbb, #fff)',
 					'background-image':'-webkit-gradient(linear, 0% 0%, 0% 100%, from(#bbb), to(#fff))',
-					'background-image':'-moz-linear-gradient(-90deg, #bbb, #fff)',
+					'background-color':settings.handle_bg_color,
 					'-webkit-border-radius':settings.switch_radius,
 					'-moz-border-radius':settings.switch_radius,
 					'border-radius':settings.switch_radius,
