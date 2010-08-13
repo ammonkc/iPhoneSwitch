@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin                          *
+*  jQuery iphoneSwitch plugin v0.85                    *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
