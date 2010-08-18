@@ -13,10 +13,12 @@
 *  http://www.opensource.org/licenses/mit-license.php  *
 ********************************************************/
 
+# adding a private git server
+
 check the demo source for examples of how to use the plugin.
 There are many options that can be passed via the 4th parameter
 
-// define default settings
+# define default settings
 var settings = {
 	mouse_over: 'pointer',
 	mouse_out:  'default',
