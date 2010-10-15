@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.85                    *
+*  jQuery iphoneSwitch plugin v0.8                     *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
@@ -142,7 +142,7 @@ jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_of
 		                    'right':1,
 		                    'bottom':1	                    
 		                    });
-		// use images 
+		// CSS3 - imagless 
 		if (!settings.use_images) {
 			track.css({
 					'background-color':settings.track_bg_color,
