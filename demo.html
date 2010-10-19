@@ -8,8 +8,8 @@
     		$(document).ready(function() {
     			$('fieldset.light .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250});
     			$('fieldset.dark .iphoneSwitch').iphoneSwitch("on",function() {},function() {},{speed: 250,track_img:'images/switch_track-dark.png',track_height:28});
-    			$('fieldset.imageless .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 250,use_images:false,switch_radius:3});
-    			$('fieldset.imageless-dark .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{speed: 150,use_images:false,track_bg_color:'#333',switch_radius:4});
+    			$('fieldset.imageless .iphoneSwitch').iphoneSwitch("off",function() {},function() {},{use_images:false});
+    			$('fieldset.imageless-dark .iphoneSwitch').iphoneSwitch("off",function() {alert('switched ON')},function() {alert('switched OFF')},{speed: 150,use_images:false,track_bg_color:'#333'});
     		});
     	</script>
     	<style type="text/css" media="screen">
