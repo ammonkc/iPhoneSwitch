@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.8.2                   *
+*  jQuery iphoneSwitch plugin v0.8.5                   *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
@@ -27,21 +27,23 @@
     		hide_checkbox: true,
     		sync_checkbox: true,
     		use_images: true,
-    		speed: '300',
+    		speed: '250',
     		on_label: 'On',
     		off_label: 'Off',
     		switch_height: 28,
     		switch_width: 93,
-    		switch_radius: 3,
+    		switch_radius: 4,
     		track_img: 'images/switch_track.png',
     		track_bg_color: '#5f6777',
     		track_width: 93,
     		track_height: 27,
+    		track_padding: 0,
+    		track_dropshadow_color: 'rgba(255, 255, 255, 0.15)',
     		handle_img: 'images/switch_handle.png',
     		handle_bg_color: '#f9f9f9',
     		handle_border_color: '#d0d0d0',
     		handle_height: 25,
-    		handle_width: 37,
+    		handle_width: 40,
     		label_color: "#ffffff",
     		label_font_size: 12
     	};
@@ -57,17 +59,13 @@
     		
     		var container;
     		var track;
-    		var handle;
-    		var offset = (settings.track_width - 1) - settings.handle_width;
+    		var handle;    		
     		
     		// Hide the checkbox
     		if (settings.hide_checkbox) {checkbox.hide();}
     		
     		// sync checkbox state with switch state
-    		if (settings.sync_checkbox) {state = checkbox.attr('checked') == true ? 'on' : 'off';}
-    		
-    		var left = (state == 'on' ? offset : '1');
-    		var right = (state == 'on' ? '1' : offset);
+    		if (settings.sync_checkbox) {state = checkbox.attr('checked') == true ? 'on' : 'off';}    		
     		
     		// use images 
     		if (settings.use_images) {
@@ -76,7 +74,15 @@
     		}else{
     			track_bg = settings.track_bg_color;
     			handle_bg = settings.handle_bg_color;
+    			// tweak padding for css only version
+    			settings.track_padding = settings.track_padding + 1;
     		}
+    		
+    		// Positions
+    		var offset = (settings.track_width - settings.track_padding) - settings.handle_width;
+    		var left = (state == 'on' ? offset : settings.track_padding);
+    		var right = (state == 'on' ? settings.track_padding : offset);
+    		
     		/**** make the container ****/
     		container = jQuery('<div />')
     		                .addClass('switch-container')
@@ -152,22 +158,22 @@
     					'-webkit-border-radius':settings.switch_radius,
     					'-moz-border-radius':settings.switch_radius,
     					'border-radius':settings.switch_radius,
-    					'-webkit-box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
-    					'-moz-box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
-    					'box-shadow':'rgba(255, 255, 255, 0.15) 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+    					'-webkit-box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+    					'-moz-box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+    					'box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
     					'-webkit-background-clip':'padding-box',
     					'background-clip':'padding-box'
     					});
     			handle.css({
-    					'background':'-moz-linear-gradient(-90deg, #bbb, #fff)',
-    					'background-image':'-webkit-gradient(linear, 0% 0%, 0% 100%, from(#bbb), to(#fff))',
+    					'background':'-moz-linear-gradient(-90deg, #fcfcfc, #e6e6e6)',
+    					'background-image':'-webkit-gradient(linear, 0% 0%, 0% 100%, from(#fcfcfc), to(#e6e6e6))',
     					'background-color':settings.handle_bg_color,
-    					'-webkit-border-radius':settings.switch_radius,
-    					'-moz-border-radius':settings.switch_radius,
-    					'border-radius':settings.switch_radius,
-    					'-webkit-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
-    					'-moz-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
-    					'box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset',
+    					'-webkit-border-radius':settings.switch_radius -1,
+    					'-moz-border-radius':settings.switch_radius -1,
+    					'border-radius':settings.switch_radius -1,
+    					'-webkit-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
+    					'-moz-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
+    					'box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
     					'-webkit-background-clip':'padding-box',
     					'background-clip':'padding-box'
     					});
@@ -185,13 +191,13 @@
     		// click handling
     		jQuery(mySwitch).find('.' + settings.handle_class).click(function() {
     			if(state == 'on') {
-    				$(this).animate({left: 1,right: offset}, settings.speed, function() {
+    				$(this).animate({left: settings.track_padding,right: offset}, settings.speed, function() {
     					switched_off_callback();
     				});
     				checkbox.attr('checked',false);
     				state = 'off';
     			}else {
-    				$(this).animate({left: offset,right: 1}, settings.speed, function() {
+    				$(this).animate({left: offset,right: settings.track_padding}, settings.speed, function() {
     					switched_on_callback();
     				});
     				checkbox.attr('checked',true);
