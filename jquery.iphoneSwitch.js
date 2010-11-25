@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.8.5                   *
+*  jQuery iphoneSwitch plugin v0.8.6                   *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
@@ -194,13 +194,15 @@
     				$(this).animate({left: settings.track_padding,right: offset}, settings.speed, function() {
     					switched_off_callback();
     				});
-    				checkbox.attr('checked',false);
+    				checkbox.attr('checked',false)
+    				        .trigger('change');
     				state = 'off';
     			}else {
     				$(this).animate({left: offset,right: settings.track_padding}, settings.speed, function() {
     					switched_on_callback();
     				});
-    				checkbox.attr('checked',true);
+    				checkbox.attr('checked',true)
+    				        .trigger('change');
     				state = 'on';
     			}
     		});		
