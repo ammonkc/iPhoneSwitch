@@ -1,12 +1,12 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.8.6                   *
+*  jQuery iphoneSwitch plugin v0.8.7                   *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
 *  Website: http://www.brokenparadigmlabs.com          *
 *  Hosted: http://github.com/ammonkc/iPhoneSwitch      *
 *  Twitter: @ammonkc                                   *
-*  Date: 10.18.2010                                    *
+*  Date: 12.09.2010                                    *
 *                                                      *
 *  Copyright (c) 2010, Ammon Casey                     *
 *  licensed under the MIT license:                     *
@@ -59,7 +59,8 @@
     		
     		var container;
     		var track;
-    		var handle;    		
+    		var handle;
+			var track_padding;
     		
     		// Hide the checkbox
     		if (settings.hide_checkbox) {checkbox.hide();}
@@ -71,17 +72,18 @@
     		if (settings.use_images) {
     			track_bg = 'url('+settings.track_img+')';
     			handle_bg = 'url('+settings.handle_img+')';
+				track_padding = settings.track_padding;
     		}else{
     			track_bg = settings.track_bg_color;
     			handle_bg = settings.handle_bg_color;
     			// tweak padding for css only version
-    			settings.track_padding = settings.track_padding + 1;
+    			track_padding = settings.track_padding + 1;
     		}
     		
     		// Positions
-    		var offset = (settings.track_width - settings.track_padding) - settings.handle_width;
-    		var left = (state == 'on' ? offset : settings.track_padding);
-    		var right = (state == 'on' ? settings.track_padding : offset);
+    		var offset = (settings.track_width - track_padding) - settings.handle_width;
+    		var left = (state == 'on' ? offset : track_padding);
+    		var right = (state == 'on' ? track_padding : offset);
     		
     		/**** make the container ****/
     		container = jQuery('<div />')
@@ -191,14 +193,14 @@
     		// click handling
     		jQuery(mySwitch).find('.' + settings.handle_class).click(function() {
     			if(state == 'on') {
-    				$(this).animate({left: settings.track_padding,right: offset}, settings.speed, function() {
+    				$(this).animate({left: track_padding,right: offset}, settings.speed, function() {
     					switched_off_callback();
     				});
     				checkbox.attr('checked',false)
     				        .trigger('change');
     				state = 'off';
     			}else {
-    				$(this).animate({left: offset,right: settings.track_padding}, settings.speed, function() {
+    				$(this).animate({left: offset,right: track_padding}, settings.speed, function() {
     					switched_on_callback();
     				});
     				checkbox.attr('checked',true)
