@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.8.7                   *
+*  jQuery iphoneSwitch plugin v0.8.8                   *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
@@ -192,22 +192,24 @@
     		
     		// click handling
     		jQuery(mySwitch).find('.' + settings.handle_class).click(function() {
-    			if(state == 'on') {
+    		    var cb = $(this).parent().parent().find('input[type="checkbox"]');
+    		    var checked_state = cb.attr('checked') == true ? 'on' : 'off';
+    			if(checked_state == 'on') {
     				$(this).animate({left: track_padding,right: offset}, settings.speed, function() {
     					switched_off_callback();
     				});
-    				checkbox.attr('checked',false)
+    				cb.attr('checked',false)
     				        .trigger('change');
-    				state = 'off';
+    				checked_state = 'off';
     			}else {
     				$(this).animate({left: offset,right: track_padding}, settings.speed, function() {
     					switched_on_callback();
     				});
-    				checkbox.attr('checked',true)
+    				cb.attr('checked',true)
     				        .trigger('change');
-    				state = 'on';
+    				checked_state = 'on';
     			}
-    		});		
+    		});
     
     	});	
     }
