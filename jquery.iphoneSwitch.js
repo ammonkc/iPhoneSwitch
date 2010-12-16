@@ -192,18 +192,24 @@
     		
     		// click handling
     		jQuery(mySwitch).find('.' + settings.handle_class).click(function() {
-    		    var cb = $(this).parent().parent().find('input[type="checkbox"]');
+    		    var cb = jQuery(this).parent().parent().find('input[type="checkbox"]');
     		    var checked_state = cb.attr('checked') == true ? 'on' : 'off';
     			if(checked_state == 'on') {
-    				$(this).animate({left: track_padding,right: offset}, settings.speed, function() {
-    					switched_off_callback();
+    				jQuery(this).animate({left: track_padding,right: offset}, settings.speed, function() {
+    					if (typeof switched_off_callback == 'function')
+    					{
+    					    switched_off_callback.call(this, data);
+    					}
     				});
     				cb.attr('checked',false)
     				        .trigger('change');
     				checked_state = 'off';
     			}else {
-    				$(this).animate({left: offset,right: track_padding}, settings.speed, function() {
-    					switched_on_callback();
+    				jQuery(this).animate({left: offset,right: track_padding}, settings.speed, function() {
+    					if (typeof switched_on_callback == 'function')
+    					{
+    					    switched_on_callback.call(this, data);
+    					}
     				});
     				cb.attr('checked',true)
     				        .trigger('change');
