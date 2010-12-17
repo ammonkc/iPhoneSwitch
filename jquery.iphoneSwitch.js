@@ -198,7 +198,7 @@
     				jQuery(this).animate({left: track_padding,right: offset}, settings.speed, function() {
     					if (typeof switched_off_callback == 'function')
     					{
-    					    switched_off_callback.call(this, data);
+    					    switched_off_callback.call(this);
     					}
     				});
     				cb.attr('checked',false)
@@ -208,7 +208,7 @@
     				jQuery(this).animate({left: offset,right: track_padding}, settings.speed, function() {
     					if (typeof switched_on_callback == 'function')
     					{
-    					    switched_on_callback.call(this, data);
+    					    switched_on_callback.call(this);
     					}
     				});
     				cb.attr('checked',true)
