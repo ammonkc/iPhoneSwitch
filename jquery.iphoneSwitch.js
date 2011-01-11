@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.8.8                   *
+*  jQuery iphoneSwitch plugin v0.8.9                   *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
@@ -195,22 +195,12 @@
     		    var cb = jQuery(this).parent().parent().find('input[type="checkbox"]');
     		    var checked_state = cb.attr('checked') == true ? 'on' : 'off';
     			if(checked_state == 'on') {
-    				jQuery(this).animate({left: track_padding,right: offset}, settings.speed, function() {
-    					if (typeof switched_off_callback == 'function')
-    					{
-    					    switched_off_callback.call(this);
-    					}
-    				});
+    				slide_handle(jQuery(this), track_padding, offset, settings.speed, switched_off_callback);
     				cb.attr('checked',false)
     				        .trigger('change');
     				checked_state = 'off';
     			}else {
-    				jQuery(this).animate({left: offset,right: track_padding}, settings.speed, function() {
-    					if (typeof switched_on_callback == 'function')
-    					{
-    					    switched_on_callback.call(this);
-    					}
-    				});
+    				slide_handle(jQuery(this), offset, track_padding, settings.speed, switched_on_callback);
     				cb.attr('checked',true)
     				        .trigger('change');
     				checked_state = 'on';
@@ -219,4 +209,16 @@
     
     	});	
     }
+    
+    /*** Private functions ***/
+    function slide_handle(handle, left_pos, right_pos, speed, switch_callback)
+    {
+        jQuery(handle).animate({left: left_pos,right: right_pos}, speed, function() {
+        	if (typeof switch_callback == 'function')
+        	{
+        	    switch_callback.call(this);
+        	}
+        });
+    }
+    
 })(jQuery);
