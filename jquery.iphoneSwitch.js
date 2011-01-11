@@ -192,17 +192,17 @@
     		
     		// click handling
     		jQuery(mySwitch).find('.' + settings.handle_class).click(function() {
-    		    var cb = jQuery(this).parent().parent().find('input[type="checkbox"]');
+    		    var cb = jQuery(this).parent().parent().find('input:checkbox');
     		    var checked_state = cb.attr('checked') == true ? 'on' : 'off';
     			if(checked_state == 'on') {
     				slide_handle(jQuery(this), track_padding, offset, settings.speed, switched_off_callback);
     				cb.attr('checked',false)
-    				        .trigger('change');
+    				  .trigger('change');
     				checked_state = 'off';
     			}else {
     				slide_handle(jQuery(this), offset, track_padding, settings.speed, switched_on_callback);
     				cb.attr('checked',true)
-    				        .trigger('change');
+    				  .trigger('change');
     				checked_state = 'on';
     			}
     		});//- END .click()
