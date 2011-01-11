@@ -19,33 +19,33 @@
     	
     	// define default settings
     	var settings = {
-    	    track_class: 'track',
-    	    handle_class: 'handle',
-    	    label_class: 'label',
-    		mouse_over: 'pointer',
-    		mouse_out:  'default',
-    		hide_checkbox: true,
-    		sync_checkbox: true,
-    		use_images: true,
-    		speed: '250',
-    		on_label: 'On',
-    		off_label: 'Off',
-    		switch_height: 28,
-    		switch_width: 93,
-    		switch_radius: 4,
-    		track_img: 'images/switch_track.png',
-    		track_bg_color: '#5f6777',
-    		track_width: 93,
-    		track_height: 27,
-    		track_padding: 0,
-    		track_dropshadow_color: 'rgba(255, 255, 255, 0.15)',
-    		handle_img: 'images/switch_handle.png',
-    		handle_bg_color: '#f9f9f9',
-    		handle_border_color: '#d0d0d0',
-    		handle_height: 25,
-    		handle_width: 40,
-    		label_color: "#ffffff",
-    		label_font_size: 12
+    	    track_class             : 'track',
+    	    handle_class            : 'handle',
+    	    label_class             : 'label',
+    		mouse_over              : 'pointer',
+    		mouse_out               :  'default',
+    		hide_checkbox           : true,
+    		sync_checkbox           : true,
+    		use_images              : true,
+    		speed                   : '250',
+    		on_label                : 'On',
+    		off_label               : 'Off',
+    		switch_height           : 28,
+    		switch_width            : 93,
+    		switch_radius           : 4,
+    		track_img               : 'images/switch_track.png',
+    		track_bg_color          : '#5f6777',
+    		track_width             : 93,
+    		track_height            : 27,
+    		track_padding           : 0,
+    		track_dropshadow_color  : 'rgba(255, 255, 255, 0.15)',
+    		handle_img              : 'images/switch_handle.png',
+    		handle_bg_color         : '#f9f9f9',
+    		handle_border_color     : '#d0d0d0',
+    		handle_height           : 25,
+    		handle_width            : 40,
+    		label_color             : "#ffffff",
+    		label_font_size         : 12
     	};
     
     	if(options) {
@@ -205,10 +205,10 @@
     				        .trigger('change');
     				checked_state = 'on';
     			}
-    		});
+    		});//- END .click()
     
-    	});	
-    }
+    	});//- END .each()
+    }//- END $.fn.iphoneSwitch()
     
     /*** Private functions ***/
     function slide_handle(handle, left_pos, right_pos, speed, switch_callback)
