@@ -217,8 +217,8 @@
         	if (typeof switch_callback == 'function')
         	{
         	    switch_callback.call(this);
-        	}
-        });
-    }
+        	}//- END if
+        });//- END animate
+    }//- END slide_handle()
     
 })(jQuery);
