@@ -55,7 +55,7 @@
     	// create the switch
     	return this.each(function() {
     		var checkbox = jQuery(this);
-    		if (!jQuery(checkbox).is(':checkbox')) { return; }
+    		if (!checkbox.is(':checkbox')) { return; }
     		
     		var container;
     		var track;
@@ -66,7 +66,7 @@
     		if (settings.hide_checkbox) {checkbox.hide();}
     		
     		// sync checkbox state with switch state
-    		if (settings.sync_checkbox) {state = checkbox.attr('checked') == true ? 'on' : 'off';}    		
+    		if (settings.sync_checkbox) {state = checkbox.is(':checked')}    		
     		
     		// use images 
     		if (settings.use_images) {
@@ -82,8 +82,8 @@
     		
     		// Positions
     		var offset = (settings.track_width - track_padding) - settings.handle_width;
-    		var left = (state == 'on' ? offset : track_padding);
-    		var right = (state == 'on' ? track_padding : offset);
+    		var left = (state ? offset : track_padding);
+    		var right = (state ? track_padding : offset);
     		
     		/**** make the container ****/
     		container = jQuery('<div />')
@@ -207,11 +207,11 @@
     		    var myHandle = jQuery(this);
     		    var cb = myHandle.parent().siblings('input:checkbox');
     		    var checkd = cb.is('input:checked');
-    		    var left = (checkd ? track_padding : offset);
-    		    var right = (checkd ? offset : track_padding);
+    		    var l = (checkd ? track_padding : offset);
+    		    var r = (checkd ? offset : track_padding);
     		    var switched_callback = (checkd ? switched_off_callback : switched_on_callback);
     		    // slide the handle
-    		    slide_handle(myHandle, left, right, settings.speed, switched_callback);
+    		    slide_handle(myHandle, l, r, settings.speed, switched_callback);
     		    cb.attr('checked', (checkd ? false : true))
     		      .trigger('change');
     		});//- END .click()
