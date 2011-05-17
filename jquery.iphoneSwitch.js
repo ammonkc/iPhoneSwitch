@@ -6,7 +6,7 @@
 *  Website: http://www.brokenparadigmlabs.com          *
 *  Hosted: http://github.com/ammonkc/iPhoneSwitch      *
 *  Twitter: @ammonkc                                   *
-*  Date: 5.17.2011                                    *
+*  Date: 5.17.2011                                     *
 *                                                      *
 *  Copyright (c) 2010, Ammon Casey                     *
 *  licensed under the MIT license:                     *
