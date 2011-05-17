@@ -1,12 +1,12 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.8.9                   *
+*  jQuery iphoneSwitch plugin v0.9                     *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
 *  Website: http://www.brokenparadigmlabs.com          *
 *  Hosted: http://github.com/ammonkc/iPhoneSwitch      *
 *  Twitter: @ammonkc                                   *
-*  Date: 12.09.2010                                    *
+*  Date: 5.17.2011                                    *
 *                                                      *
 *  Copyright (c) 2010, Ammon Casey                     *
 *  licensed under the MIT license:                     *
@@ -118,7 +118,11 @@
     		                'bottom':1,
     		                'position':'absolute',
     		                'background-image':handle_bg,
-    		                'background-repeat':'no-repeat'
+    		                'background-repeat':'no-repeat',
+    		                'cursor':'pointer',
+    		                '-webkit-user-select':'none',
+    		                '-moz-user-select':'none',
+    		                'user-select':'none'
     		                });
     
     		/**** Make the labels ****/
@@ -134,6 +138,10 @@
     		                    'font-size':settings.label_font_size,
     		                    'text-align':'center',
     		                    'text-shadow':'#333 0px 1px 0px',
+    		                    '-webkit-user-select':'none',
+    		                    '-moz-user-select':'none',
+    		                    'user-select':'none',
+    		                    'cursor':'default',
     		                    'float':'left'	                    
     		                    });
     		label_off = jQuery('<span />')
@@ -148,6 +156,10 @@
     		                    'font-size':settings.label_font_size,
     		                    'text-align':'center',
     		                    'text-shadow':'#333 0px 1px 0px',
+    		                    '-webkit-user-select':'none',
+    		                    '-moz-user-select':'none',
+    		                    'user-select':'none',
+    		                    'cursor':'default',
     		                    'position':'absolute',
     		                    'top':1,
     		                    'right':1,
@@ -192,19 +204,16 @@
     		
     		// click handling
     		jQuery(mySwitch).find('.' + settings.handle_class).click(function() {
-    		    var cb = jQuery(this).parent().parent().find('input:checkbox');
-    		    var checked_state = cb.attr('checked') == true ? 'on' : 'off';
-    			if(checked_state == 'on') {
-    				slide_handle(jQuery(this), track_padding, offset, settings.speed, switched_off_callback);
-    				cb.attr('checked',false)
-    				  .trigger('change');
-    				checked_state = 'off';
-    			}else {
-    				slide_handle(jQuery(this), offset, track_padding, settings.speed, switched_on_callback);
-    				cb.attr('checked',true)
-    				  .trigger('change');
-    				checked_state = 'on';
-    			}
+    		    var myHandle = jQuery(this);
+    		    var cb = myHandle.parent().siblings('input:checkbox');
+    		    var checkd = cb.is('input:checked');
+    		    var left = (checkd ? track_padding : offset);
+    		    var right = (checkd ? offset : track_padding);
+    		    var switched_callback = (checkd ? switched_off_callback : switched_on_callback);
+    		    // slide the handle
+    		    slide_handle(myHandle, left, right, settings.speed, switched_callback);
+    		    cb.attr('checked', (checkd ? false : true))
+    		      .trigger('change');
     		});//- END .click()
     
     	});//- END .each()

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
     	<title>iPhoneSwitch Demo</title>
-    	<script type="text/javascript" src="jquery.min.js"></script>
+    	<script type="text/javascript" src="jquery-1.6.1.min.js"></script>
     	<script type="text/javascript" src="jquery.iphoneSwitch.js"></script>
     	<script type="text/javascript" charset="utf-8">
     		$(document).ready(function() {
@@ -46,6 +46,7 @@
     			text-align: right;
     			float: left;
     		}
+    		h2 {color: rgb(102, 102, 102);text-align:center;}
     		fieldset 
     		{
     			border: 1px solid #ccc;
@@ -54,14 +55,24 @@
     		fieldset.dark 
     		{
     			background-color: #444;	
-    			color: #CED2D8;	
     		}
-    		fieldset.imageless-dark 
+    		fieldset.dark label,
+    		fieldset.dark h3
+    		{
+    		    color: #fafafa;	
+    		    text-shadow: rgba(0,0,0, 0.7) 0px 1px 0px;
+    		}
+    		fieldset.imageless-dark
     		{
     			background-color: #444;
-    			color: #CED2D8;
     		}
-    		h2 {color: rgb(102, 102, 102);text-align:center;}
+    		fieldset.imageless-dark label,
+    		fieldset.imageless-dark h3
+    		{
+    		    color: #fafafa;	
+    		    text-shadow: rgba(0,0,0, 0.7) 0px 1px 0px;
+    		}
+    		
     	</style>
     </head>
     <body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">

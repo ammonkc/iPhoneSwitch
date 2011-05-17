@@ -6,7 +6,7 @@
 *  Website: http://www.brokenparadigmlabs.com          *
 *  http://github.com/ammonkc/iPhoneSwitch              *
 *  Twitter: @ammonkc                                   *
-*  Date: 08.10.2010                                    *
+*  Date: 5.17.2011                                    *
 *                                                      *
 *  Copyright (c) 2010, Ammon Casey                     *
 *  licensed under the MIT license:                     *
@@ -41,3 +41,9 @@ var settings = {
 	label_color: "#ffffff",
 	label_font_size: 12
 };
+
+Change Log 0.9
+    - added jQuery-1.6.1
+    - fixed slider state in new versions of jquery
+    - made label text not selectable
+    - changed cursor on handle and track/labels
