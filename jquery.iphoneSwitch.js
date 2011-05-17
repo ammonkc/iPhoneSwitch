@@ -15,7 +15,7 @@
 (function($){
     jQuery.fn.iphoneSwitch = function(start_state, switched_on_callback, switched_off_callback, options) {
     
-    	var state = start_state == 'on' ? start_state : 'off';
+    	var state = (start_state == 'on' ? true : false);
     	
     	// define default settings
     	var settings = {
