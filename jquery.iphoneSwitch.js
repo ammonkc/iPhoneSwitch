@@ -122,6 +122,7 @@
     		                'cursor':'pointer',
     		                '-webkit-user-select':'none',
     		                '-moz-user-select':'none',
+    		                '-o-user-select':'none',
     		                'user-select':'none'
     		                });
     
@@ -140,6 +141,7 @@
     		                    'text-shadow':'#333 0px 1px 0px',
     		                    '-webkit-user-select':'none',
     		                    '-moz-user-select':'none',
+    		                    '-o-user-select':'none',
     		                    'user-select':'none',
     		                    'cursor':'default',
     		                    'float':'left'	                    
@@ -158,6 +160,7 @@
     		                    'text-shadow':'#333 0px 1px 0px',
     		                    '-webkit-user-select':'none',
     		                    '-moz-user-select':'none',
+    		                    '-o-user-select':'none',
     		                    'user-select':'none',
     		                    'cursor':'default',
     		                    'position':'absolute',
@@ -171,22 +174,26 @@
     					'background-color':settings.track_bg_color,
     					'-webkit-border-radius':settings.switch_radius,
     					'-moz-border-radius':settings.switch_radius,
+    					'-o-border-radius':settings.switch_radius,
     					'border-radius':settings.switch_radius,
     					'-webkit-box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
     					'-moz-box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
+    					'-o-box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
     					'box-shadow': settings.track_dropshadow_color + ' 0px 1px 1px, rgba(1, 1, 1, 0.65) 0px 3px 6px inset',
     					'-webkit-background-clip':'padding-box',
     					'background-clip':'padding-box'
     					});
     			handle.css({
-    					'background':'-moz-linear-gradient(-90deg, #fcfcfc, #e6e6e6)',
-    					'background-image':'-webkit-gradient(linear, 0% 0%, 0% 100%, from(#fcfcfc), to(#e6e6e6))',
+    					'background':'-webkit-gradient(linear, 0% 0%, 0% 100%, from(#fcfcfc), to(#e6e6e6))',
+    					'background-image':'-moz-linear-gradient(-90deg, #fcfcfc, #e6e6e6)',
     					'background-color':settings.handle_bg_color,
     					'-webkit-border-radius':settings.switch_radius -1,
     					'-moz-border-radius':settings.switch_radius -1,
+    					'-o-border-radius':settings.switch_radius -1,
     					'border-radius':settings.switch_radius -1,
     					'-webkit-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
     					'-moz-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
+    					'-o-box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
     					'box-shadow':'rgba(255,255,255,1) 0px 0px 3px inset, rgba(0, 0, 0, 0.99) 0px 0px 3px',
     					'-webkit-background-clip':'padding-box',
     					'background-clip':'padding-box'
