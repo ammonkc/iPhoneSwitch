@@ -6,7 +6,7 @@
 *  Website: http://www.brokenparadigmlabs.com          *
 *  http://github.com/ammonkc/iPhoneSwitch              *
 *  Twitter: @ammonkc                                   *
-*  Date: 5.17.2011                                    *
+*  Date: 10.08.2013                                    *
 *                                                      *
 *  Copyright (c) 2010, Ammon Casey                     *
 *  licensed under the MIT license:                     *
@@ -41,6 +41,10 @@ var settings = {
 	label_color: "#ffffff",
 	label_font_size: 12
 };
+
+Change Log 0.10
+    - added jQuery-1.10.2
+    - updated jQuery(checkbox).attr to jQuery(checkbox).prop
 
 Change Log 0.9
     - added jQuery-1.6.1

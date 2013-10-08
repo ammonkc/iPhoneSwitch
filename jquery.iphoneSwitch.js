@@ -1,5 +1,5 @@
 /******************************************************* 
-*  jQuery iphoneSwitch plugin v0.9                     *
+*  jQuery iphoneSwitch plugin v0.10                    *
 *                                                      *
 *  jquery.iphoneSwitch.js                              *
 *  Author: Ammon Casey                                 *
@@ -219,7 +219,7 @@
     		    var switched_callback = (checkd ? switched_off_callback : switched_on_callback);
     		    // slide the handle
     		    slide_handle(myHandle, l, r, settings.speed, switched_callback);
-    		    cb.attr('checked', (checkd ? false : true))
+    		    cb.prop('checked', (checkd ? false : true))
     		      .trigger('change');
     		});//- END .click()
     
